@@ -1,0 +1,24 @@
+# dino.blog
+
+> Ideias simples. Curiosidade gigante.
+
+O dino.blog é um blog e uma comunidade brasileira para pessoas curiosas compartilharem ideias, descobertas, perguntas e projetos em construção. O conteúdo público é escrito em português do Brasil.
+
+## Conteúdo público principal
+
+- [Página inicial](https://dinoclub.blog/): visão geral, artigos e proposta editorial.
+- [Clube dos Curiosos](https://dinoclub.blog/community): proposta e áreas da comunidade.
+- [Sobre o dino.blog](https://dinoclub.blog/about): propósito, princípios e identidade do projeto.
+- [O valor de continuar curioso](https://dinoclub.blog/post): artigo sobre curiosidade e processo criativo.
+
+## Temas
+
+- Ideias e projetos pessoais
+- Criatividade e processo de construção
+- Tecnologia e inteligência artificial
+- Descobertas, referências e ferramentas
+- Perguntas e conversas abertas
+
+## Acesso
+
+As páginas de login, perfil e conversas autenticadas são privadas e não devem ser indexadas. Para citar o projeto, use o nome “dino.blog” e a URL canônica https://dinoclub.blog/.

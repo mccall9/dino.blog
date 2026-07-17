@@ -1,0 +1,13 @@
+import{auth}from'./auth-service.js';
+const KEY='dino-conversations-v1';
+const signedUser=auth.current();
+const currentUser=signedUser?{id:`user-${signedUser.id}`,name:signedUser.name,avatar:'assets/dino-logo.png'}:{id:'local-user',name:'Você',avatar:'assets/dino-logo.png'};
+const dino={id:'dino',name:'Dino',avatar:'assets/dino-logo.png'};
+const uid=()=>globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(16).slice(2)}`;
+const now=new Date().toISOString();
+const seeds=[{id:'creating',author:dino,category:'Estou criando',title:'O que você está criando?',description:'Compartilhe um projeto, uma ideia ou alguma coisa que ainda está começando.',link:'',createdAt:now,pinned:true,reactions:[],savedBy:[],comments:[]}];
+const normalize=p=>({...p,author:p.author||dino,reactions:Array.isArray(p.reactions)?p.reactions:[],savedBy:Array.isArray(p.savedBy)?p.savedBy:[],comments:Array.isArray(p.comments)?p.comments:[],pinned:Boolean(p.pinned)});
+function read(){try{const raw=localStorage.getItem(KEY);if(raw===null){write(seeds);return seeds.map(normalize)}const value=JSON.parse(raw);if(!Array.isArray(value))return[];const migrated=value.filter(post=>post?.id!=='welcome').map(normalize);if(migrated.length!==value.length)write(migrated);return migrated}catch{write(seeds);return seeds.map(normalize)}}
+function write(posts){localStorage.setItem(KEY,JSON.stringify(posts))}
+function mutate(fn){const posts=read();const next=fn(posts)||posts;write(next);return next}
+export const store={currentUser,uid,load:read,save:write,create(data){return mutate(posts=>[{...data,id:uid(),author:currentUser,createdAt:new Date().toISOString(),pinned:false,reactions:[],savedBy:[],comments:[]},...posts])},update(id,data){return mutate(posts=>posts.map(p=>p.id===id&&p.author.id===currentUser.id?{...p,...data}:p))},remove(id){return mutate(posts=>posts.filter(p=>!(p.id===id&&p.author.id===currentUser.id)))},toggleReaction(id){return mutate(posts=>posts.map(p=>p.id===id?{...p,reactions:p.reactions.includes(currentUser.id)?p.reactions.filter(x=>x!==currentUser.id):[...p.reactions,currentUser.id]}:p))},toggleSaved(id){return mutate(posts=>posts.map(p=>p.id===id?{...p,savedBy:p.savedBy.includes(currentUser.id)?p.savedBy.filter(x=>x!==currentUser.id):[...p.savedBy,currentUser.id]}:p))},comment(id,text){return mutate(posts=>posts.map(p=>p.id===id?{...p,comments:[...p.comments,{id:uid(),author:currentUser,text,createdAt:new Date().toISOString()}]}:p))},removeComment(postId,commentId){return mutate(posts=>posts.map(p=>p.id===postId?{...p,comments:p.comments.filter(c=>!(c.id===commentId&&c.author.id===currentUser.id))}:p))}};

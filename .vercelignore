@@ -1,0 +1,10 @@
+*.md
+*.sql
+PROJECT_PLAN.md
+ARCHITECTURE.md
+blog-*.md
+supabase/
+.env
+.env.*
+.git/
+.gitignore

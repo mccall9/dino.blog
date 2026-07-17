@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Conversas e ideias da comunidade Dino." />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Conversas — Dino Blog</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-dino-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/favicon-dino-512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon-dino-180.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header inner-header">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="/"
+          ><img class="brand-mark" src="assets/dino-logo.png" alt="" /><span
+            >dino.blog</span
+          ></a
+        >
+        <div class="nav-links">
+          <a href="/community">Comunidade</a
+          ><a href="/feed" aria-current="page">Conversas</a
+          ><a class="button" href="/profile">Perfil →</a>
+        </div>
+      </nav>
+    </header>
+    <main id="conteudo" class="feed-page">
+      <div class="feed-shell">
+        <div class="feed-top">
+          <div class="feed-heading">
+            <span class="eyebrow">Clube dos Curiosos</span>
+            <h1>Conversas</h1>
+            <p>
+              Ideias, descobertas e projetos compartilhados pela comunidade.
+            </p>
+          </div>
+          <label class="feed-search" for="feed-search">
+            <span class="visually-hidden">Buscar nas conversas</span>
+            <span class="feed-search-icon" aria-hidden="true"></span>
+            <input
+              id="feed-search"
+              type="search"
+              placeholder="Buscar conversas..."
+              autocomplete="off"
+            />
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+        </div>
+        <div class="feed-grid">
+          <div class="feed-main">
+            <button
+              class="composer-trigger"
+              id="composer-trigger"
+              type="button"
+            >
+              <img
+                class="composer-avatar"
+                src="assets/dino-logo.png"
+                alt=""
+              /><span>No que você está pensando?</span>
+            </button>
+            <div class="feed-discovery">
+              <span class="feed-section-label">Explorar assuntos</span>
+              <div
+                class="category-filters"
+                id="category-filters"
+                role="group"
+                aria-label="Filtrar por categoria"
+              ></div>
+            </div>
+            <section
+              class="feed-list"
+              id="feed-list"
+              aria-label="Publicações da comunidade"
+            ></section>
+            <div class="feed-empty" id="feed-empty" hidden>
+              <p>Nenhuma conversa por aqui ainda. Que tal começar?</p>
+              <button class="button secondary" type="button" data-open-modal>
+                Nova publicação
+              </button>
+            </div>
+          </div>
+          <aside class="feed-aside" id="community-sidebar"></aside>
+        </div>
+      </div>
+    </main>
+    <dialog
+      class="conversation-modal"
+      id="conversation-modal"
+      aria-labelledby="modal-title"
+    >
+      <form id="post-form" novalidate>
+        <div class="modal-head">
+          <h2 id="modal-title">Nova publicação</h2>
+          <button
+            class="icon-button"
+            id="close-modal"
+            type="button"
+            aria-label="Fechar"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <fieldset class="category-picker">
+            <legend>Categoria <span aria-hidden="true">*</span></legend>
+            <div id="category-picker"></div>
+            <p class="field-error" id="category-error"></p>
+          </fieldset>
+          <div class="form-row">
+            <label for="post-title"
+              >Título <span aria-hidden="true">*</span></label
+            ><input id="post-title" maxlength="120" required />
+            <p class="field-error"></p>
+          </div>
+          <div class="form-row">
+            <label for="post-description"
+              >Descrição <span aria-hidden="true">*</span></label
+            ><textarea
+              id="post-description"
+              maxlength="1200"
+              required
+            ></textarea>
+            <p class="field-error"></p>
+          </div>
+          <div class="form-row">
+            <label for="post-link"
+              >Link <span class="optional">opcional</span></label
+            ><input
+              id="post-link"
+              type="url"
+              inputmode="url"
+              placeholder="https://"
+            />
+            <p class="field-error"></p>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <p
+            class="modal-status"
+            id="post-form-status"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <button class="button secondary" id="cancel-modal" type="button">
+            Cancelar</button
+          ><button class="button" id="submit-post" type="submit">
+            Publicar
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="confirm-dialog"
+      id="confirm-dialog"
+      aria-labelledby="confirm-title"
+    >
+      <h2 id="confirm-title">Excluir publicação?</h2>
+      <p>Esta ação não pode ser desfeita.</p>
+      <div class="modal-actions">
+        <button class="button secondary" id="cancel-delete" type="button">
+          Cancelar</button
+        ><button class="button danger" id="confirm-delete" type="button">
+          Excluir
+        </button>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="feed.js"></script>
+  </body>
+</html>

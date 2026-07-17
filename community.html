@@ -1,0 +1,206 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Conheça o Clube dos Curiosos, a comunidade do dino.blog para compartilhar ideias, perguntas, descobertas e projetos pessoais."
+    />
+    <title>Descubra comunidades — Dino Blog</title>
+    <link rel="canonical" href="https://dinoclub.blog/community" />
+    <meta name="author" content="dino.blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="dino.blog" />
+    <meta property="og:title" content="Clube dos Curiosos — dino.blog" />
+    <meta
+      property="og:description"
+      content="Um lugar leve para compartilhar ideias, perguntas, descobertas e projetos que ainda estão começando."
+    />
+    <meta property="og:url" content="https://dinoclub.blog/community" />
+    <meta
+      property="og:image"
+      content="https://dinoclub.blog/assets/dino-blog-hero.png"
+    />
+    <meta property="og:image:alt" content="Dino investigando uma nova ideia" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Clube dos Curiosos — dino.blog" />
+    <meta
+      name="twitter:description"
+      content="Pense em voz alta e encontre outras pessoas curiosas."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dinoclub.blog/assets/dino-blog-hero.png"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "@id": "https://dinoclub.blog/community#page",
+        "url": "https://dinoclub.blog/community",
+        "name": "Comunidades do dino.blog",
+        "description": "Um lugar leve para compartilhar ideias, perguntas, descobertas e projetos que ainda estão começando.",
+        "inLanguage": "pt-BR",
+        "isPartOf": { "@id": "https://dinoclub.blog/#website" },
+        "publisher": { "@id": "https://dinoclub.blog/#organization" }
+      }
+    </script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-dino-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/favicon-dino-512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon-dino-180.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header inner-header">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="/"
+          ><img class="brand-mark" src="assets/dino-logo.png" alt="" /><span
+            >dino.blog</span
+          ></a
+        >
+        <div class="nav-links">
+          <a href="/#artigos">Artigos</a
+          ><a href="/community" aria-current="page">Comunidade</a
+          ><a href="/about">Sobre</a
+          ><a class="button" href="/login">Participar →</a>
+        </div>
+      </nav>
+    </header>
+    <main id="conteudo" class="community-directory">
+      <div class="directory-shell">
+        <header class="directory-hero">
+          <span class="eyebrow">Espaços para gente curiosa</span>
+          <h1>descubra comunidades</h1>
+          <button class="directory-create-link" id="open-interest" type="button">
+            ou crie a sua
+          </button>
+        </header>
+
+        <form class="directory-search" id="community-search-form" role="search">
+          <label class="visually-hidden" for="community-search"
+            >Buscar comunidades</label
+          >
+          <span class="directory-search-icon" aria-hidden="true"></span>
+          <input
+            id="community-search"
+            type="search"
+            placeholder="buscar comunidades..."
+            autocomplete="off"
+          />
+          <kbd aria-hidden="true">/</kbd>
+        </form>
+
+        <div
+          class="directory-filters"
+          id="community-filters"
+          role="group"
+          aria-label="Filtrar comunidades por assunto"
+        ></div>
+
+        <section class="directory-results" aria-labelledby="directory-results-title">
+          <div class="directory-results-head">
+            <h2 id="directory-results-title">Comunidades</h2>
+            <span id="community-result-count" aria-live="polite"></span>
+          </div>
+          <div class="directory-grid" id="community-grid"></div>
+          <div class="directory-empty" id="community-empty" hidden>
+            <h2>Nenhuma comunidade encontrada.</h2>
+            <p>Tente outro assunto ou registre a comunidade que gostaria de criar.</p>
+            <button class="button secondary" type="button" data-open-interest>
+              Sugerir uma comunidade
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <dialog
+      class="interest-dialog"
+      id="interest-dialog"
+      aria-labelledby="interest-title"
+    >
+      <form id="interest-form" novalidate>
+        <div class="interest-dialog-head">
+          <div>
+            <span class="eyebrow">Lista de interesse</span>
+            <h2 id="interest-title">Que comunidade deveria existir?</h2>
+          </div>
+          <button
+            class="icon-button"
+            id="close-interest"
+            type="button"
+            aria-label="Fechar"
+          >
+            ×
+          </button>
+        </div>
+        <div class="interest-dialog-body">
+          <p>
+            Conte a ideia. Vamos usar as sugestões para decidir quais espaços
+            criar em seguida.
+          </p>
+          <div class="form-row">
+            <label for="interest-name">Nome da comunidade</label>
+            <input
+              id="interest-name"
+              name="name"
+              maxlength="80"
+              placeholder="Ex.: Clube de projetos de uma hora"
+              required
+            />
+            <p class="field-error"></p>
+          </div>
+          <div class="form-row">
+            <label for="interest-purpose">Qual seria o propósito?</label>
+            <textarea
+              id="interest-purpose"
+              name="purpose"
+              maxlength="500"
+              placeholder="Que tipo de conversa aconteceria por lá?"
+              required
+            ></textarea>
+            <p class="field-error"></p>
+          </div>
+          <fieldset class="interest-topics">
+            <legend>Assunto principal</legend>
+            <div id="interest-topic-options"></div>
+            <p class="field-error" id="interest-topic-error"></p>
+          </fieldset>
+        </div>
+        <div class="interest-dialog-actions">
+          <p id="interest-status" role="status" aria-live="polite"></p>
+          <button class="button secondary" id="cancel-interest" type="button">
+            Cancelar
+          </button>
+          <button class="button" id="submit-interest" type="submit">
+            Entrar na lista →
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <footer class="footer">
+      <div class="shell footer-row">
+        <span>© 2026 Dino Blog</span><span>Curiosidade compartilhada.</span>
+      </div>
+    </footer>
+    <div class="toast" id="community-toast" role="status" aria-live="polite"></div>
+    <script type="module" src="community.js"></script>
+  </body>
+</html>

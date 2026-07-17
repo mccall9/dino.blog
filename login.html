@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Entre no Clube dos Curiosos." />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Participar — Dino Blog</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-dino-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/favicon-dino-512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon-dino-180.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="auth-body otp-auth">
+    <form class="auth-back" action="/" method="get">
+      <button type="submit">← voltar</button>
+    </form>
+    <main class="auth-page">
+      <section class="auth-card email-auth" aria-labelledby="auth-title">
+        <img src="assets/favicon-dino-180.png" alt="" class="auth-logo" />
+        <h1 id="auth-title">Entrar no dino.blog</h1>
+        <p>Use seu e-mail para receber um código de acesso. Sem senha.</p>
+        <form id="email-form">
+          <label for="login-email">Seu e-mail</label>
+          <input
+            id="login-email"
+            type="email"
+            autocomplete="email"
+            placeholder="voce@email.com"
+            required
+          />
+          <button
+            class="button auth-submit"
+            type="submit"
+            data-label="Receber código →"
+          >
+            Receber código →
+          </button>
+        </form>
+        <form id="code-form" hidden>
+          <p class="code-help">
+            Enviamos um código para <strong id="code-destination"></strong>.
+          </p>
+          <label for="login-code">Código de acesso</label>
+          <input
+            id="login-code"
+            class="otp-input"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            maxlength="8"
+            pattern="[0-9]{8}"
+            placeholder="00000000"
+            required
+          />
+          <button
+            class="button auth-submit"
+            type="submit"
+            data-label="Entrar →"
+          >
+            Entrar →
+          </button>
+          <div class="otp-actions">
+            <button id="change-email" type="button">Trocar e-mail</button
+            ><button id="resend-code" type="button">Reenviar código</button>
+          </div>
+        </form>
+        <p
+          class="auth-status"
+          id="auth-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <p class="login-terms">
+          Ao continuar, você concorda em participar com curiosidade e respeito.
+        </p>
+      </section>
+    </main>
+    <script type="module" src="login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Seu perfil no dino.blog." />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Perfil — Dino Blog</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-dino-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/favicon-dino-512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon-dino-180.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header inner-header">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="/"
+          ><img class="brand-mark" src="assets/dino-logo.png" alt="" /><span
+            >dino.blog</span
+          ></a
+        >
+        <div class="nav-links">
+          <a href="/feed">Conversas</a
+          ><a href="/profile" aria-current="page">Perfil</a
+          ><button class="button" id="logout" type="button">Sair →</button>
+        </div>
+      </nav>
+    </header>
+    <main class="profile-page">
+      <section class="profile-card">
+        <div class="profile-heading">
+          <img src="assets/dino-logo.png" alt="" class="profile-avatar" />
+          <div>
+            <h1 id="profile-name">Seu perfil</h1>
+            <p id="profile-handle"></p>
+          </div>
+        </div>
+        <div class="profile-tags">
+          <span>Clube dos Curiosos</span><span id="member-since"></span>
+        </div>
+        <form id="profile-form">
+          <div class="form-row">
+            <label for="display-name">Seu nome</label
+            ><input id="display-name" maxlength="60" required />
+          </div>
+          <div class="form-row">
+            <label for="profile-username">Usuário</label
+            ><input id="profile-username" disabled />
+          </div>
+          <div class="form-row">
+            <label for="profile-site"
+              >Seu site <span class="optional">opcional</span></label
+            ><input
+              id="profile-site"
+              type="url"
+              placeholder="https://seusite.com"
+            />
+          </div>
+          <div class="form-row">
+            <label for="profile-bio"
+              >Bio <span class="optional">opcional</span></label
+            ><textarea
+              id="profile-bio"
+              maxlength="300"
+              placeholder="Conte o que você está construindo ou descobrindo..."
+            ></textarea>
+            <div class="bio-count"><span id="bio-count">0</span>/300</div>
+          </div>
+          <button class="button profile-save" type="submit">
+            Salvar alterações →
+          </button>
+          <p class="auth-status" id="profile-status" role="status"></p>
+        </form>
+      </section>
+      <section class="profile-links">
+        <a href="/feed"><span>Conversas da comunidade</span><span>→</span></a
+        ><a href="/feed"><span>Publicações salvas</span><span>→</span></a>
+      </section>
+    </main>
+    <script type="module" src="profile.js"></script>
+  </body>
+</html>
